@@ -1,1 +1,1 @@
-# veska-adventure-game
+# veska-adventure-2d-game
