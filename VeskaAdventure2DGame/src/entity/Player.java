@@ -29,9 +29,11 @@ public class Player extends Entity{
 		x = 100;
 		y = 100;
 		speed = 4;
-		direction = "up";
+		direction = "down";
 	}
 	
+	
+	//method which gets out pictures from folder and put them into variables
 	public void getPlayerImage() {
 		try {
 			
@@ -51,37 +53,47 @@ public class Player extends Entity{
 	
 	// this method called 60 times/sec
 	public void update() {
-		if(keyH.upPressed == true) {
-			direction = "up";
-			y -= speed;
-		}
-		if(keyH.leftPressed == true) {
-			direction = "left";
-			x -= speed;
-		}
-		if(keyH.downPressed == true) {
-			direction = "down";
-			y += speed;
-		}
-		if(keyH.rightPressed == true) {
-			direction = "right";
-			x += speed;
-		}
 		
+		if(keyH.upPressed == true || keyH.leftPressed == true ||
+			keyH.downPressed == true || keyH.rightPressed == true) {
+			
 		
-		// method that change frames 6 times per second (FPS/10)
-		spriteCounter++;
-		if(spriteCounter > 10) {
-			if(spriteNum == 1) {
-				spriteNum = 2;
+			// changing player speed
+			if(keyH.upPressed == true) {
+				direction = "up";
+				y -= speed;
 			}
-			else if(spriteNum == 2) {
-				spriteNum = 1;
+			if(keyH.leftPressed == true) {
+				direction = "left";
+				x -= speed;
 			}
-			spriteCounter = 0;
+			if(keyH.downPressed == true) {
+				direction = "down";
+				y += speed;
+			}
+			if(keyH.rightPressed == true) {
+				direction = "right";
+				x += speed;
+			}
+			
+			
+			// "method" that change frames 6 times per second (FPS/10)
+			spriteCounter++;
+			if(spriteCounter > 10) { // this number can change frame speed
+				if(spriteNum == 1) {
+					spriteNum = 2;
+				}
+				else if(spriteNum == 2) {
+					spriteNum = 1;
+				}
+				spriteCounter = 0;
+			}
+			
 		}
-		
 	}
+	
+	
+	
 	
 	public void draw(Graphics2D g2) {
 		

@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import entity.Player;
+import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable{
 	
@@ -17,10 +18,10 @@ public class GamePanel extends JPanel implements Runnable{
 	final int scale = 3;
 	
 	public final int tileSize = originalTileSize * scale; // 48x48 tile
-	final int maxScreenCol = 16;
-	final int maxScreenRow = 12;
-	final int screenWidth = tileSize * maxScreenCol; // 768 pixel
-	final int screenHeight= tileSize * maxScreenRow; // 576 pixel
+	public final int maxScreenCol = 16;
+	public final int maxScreenRow = 12;
+	public final int screenWidth = tileSize * maxScreenCol; // 768 pixel
+	public final int screenHeight= tileSize * maxScreenRow; // 576 pixel
 	
 	
 	//FPS
@@ -29,13 +30,7 @@ public class GamePanel extends JPanel implements Runnable{
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;
 	Player player = new Player(this, keyH);
-	
-	
-	// Set player's default position
-	
-	int playerX = 100;
-	int playerY = 100;
-	int playerSpeed = 4;
+	TileManager tileM = new TileManager(this);
 	
 
 	public GamePanel() {
@@ -53,41 +48,6 @@ public class GamePanel extends JPanel implements Runnable{
 		gameThread.start();
 	}
 
-	
-//first loop (sleep)
-	
-//	@Override
-//	public void run() {
-//		
-//		double drawInterval = 1000000000/FPS; // 0,16666 seconds time for every frame 
-//		double nextDrawTime = System.nanoTime() + drawInterval; // time, when picture redraws again
-//		
-//		while(gameThread != null) {
-//
-//			update();
-//
-//			repaint();
-//			
-//			try {
-//				double remainingTime = nextDrawTime - System.nanoTime(); // remaining time between this and next frames
-//				remainingTime = remainingTime/1000000; // convert nano seconds into millis
-//				
-//				if(remainingTime < 0) {
-//					remainingTime = 0;
-//				}
-//					
-//				Thread.sleep((long) remainingTime);
-//				
-//				nextDrawTime += drawInterval;
-//				
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//	}
-	
-	
 	
 	//secod loop (delta)
 	@Override
@@ -130,6 +90,8 @@ public class GamePanel extends JPanel implements Runnable{
 		super.paintComponent(g);
 		
 		Graphics2D g2  = (Graphics2D)g;
+		
+		tileM.draw(g2);
 		
 		player.draw(g2);
 		
