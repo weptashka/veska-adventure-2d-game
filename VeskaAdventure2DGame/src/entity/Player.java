@@ -1,7 +1,6 @@
 package entity;
 
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -16,18 +15,24 @@ public class Player extends Entity{
 	GamePanel gp;
 	KeyHandler keyH;
 	
+	public final int screenX; // make player position in the center of the screen
+	public final int screenY;
+	
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		this.gp = gp;
 		this.keyH = keyH;
+		
+		screenX = gp.screenWidth/2 - gp.tileSize/2;
+		screenY = gp.screenHeight/2 - gp.tileSize/2;
 		
 		setDefaultValues();
 		getPlayerImage();
 	}
 	
 	void setDefaultValues(){
-		x = 100;
-		y = 100;
+		worldX = gp.tileSize*5; // just some coordinates
+		worldY = gp.tileSize*5;
 		speed = 4;
 		direction = "down";
 	}
@@ -59,21 +64,22 @@ public class Player extends Entity{
 			
 		
 			// changing player speed
+			// we change player coordinates on the gp
 			if(keyH.upPressed == true) {
 				direction = "up";
-				y -= speed;
+				worldY -= speed;
 			}
 			if(keyH.leftPressed == true) {
 				direction = "left";
-				x -= speed;
+				worldX -= speed;
 			}
 			if(keyH.downPressed == true) {
 				direction = "down";
-				y += speed;
+				worldY += speed;
 			}
 			if(keyH.rightPressed == true) {
 				direction = "right";
-				x += speed;
+				worldX += speed;
 			}
 			
 			
@@ -94,7 +100,7 @@ public class Player extends Entity{
 	
 	
 	
-	
+	// change frames op player when it's coordinates are changed
 	public void draw(Graphics2D g2) {
 		
 		BufferedImage image = null;
@@ -134,7 +140,7 @@ public class Player extends Entity{
 			break;
 		}
 		
-		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 		
 //		g2.setColor(Color.white);
 //		g2.fillRect(x, y, gp.tileSize, gp.tileSize);
