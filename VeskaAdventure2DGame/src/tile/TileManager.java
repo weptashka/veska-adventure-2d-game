@@ -58,9 +58,10 @@ public class TileManager {
 			e.printStackTrace();
 		}
 		
-		
 	}
 		
+	
+	
 	public void loadMap(String filePath) {
 		try {
 			//read info about map from file
@@ -102,8 +103,8 @@ public class TileManager {
 		
 	
 	
-	//worldX, worldY - positiom n the map
-	//screeX, screeY - where on the SCREEN we draw smth
+	//worldX, worldY - position n the map
+	//screenX, screenY - where on the SCREEN we draw smth
 	public void draw(Graphics2D g2) {
 		
 		// better to read info about tiles from map
@@ -119,13 +120,18 @@ public class TileManager {
 			int worldX = worldCol * gp.tileSize;
 			int worldY = worldRow * gp.tileSize;
 			
-			int screenX = worldX - gp.player.worldX + gp.player.screenY;
-			int screenY = worldY - gp.player.worldY + gp.player.screenX;
+			int screenX = worldX - gp.player.worldX + gp.player.screenX;
+			int screenY = worldY - gp.player.worldY + gp.player.screenY;
 			
+			
+			if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
+					worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+					worldY  + gp.tileSize> gp.player.worldY - gp.player.screenX &&
+					worldY - gp.tileSize< gp.player.worldX + gp.player.screenX)
 			g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);	
 			worldCol ++;
 			
-			if(worldCol  == gp.maxScreenCol) {
+			if(worldCol  == gp.maxWorldCol) {
 				worldCol  = 0;
 				worldRow++;
 			}
