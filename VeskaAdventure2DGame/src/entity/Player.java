@@ -40,8 +40,8 @@ public class Player extends Entity{
 	}
 	
 	void setDefaultValues(){
-		worldX = gp.screenWidth/2 - gp.tileSize/2; // just some coordinates
-		worldY = gp.screenHeight/2 - gp.tileSize/2;
+		worldX = gp.tileSize*11; // just some coordinates
+		worldY = 0;
 		speed = 4;
 		direction = "down";
 	}

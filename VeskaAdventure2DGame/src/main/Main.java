@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Date;
-
 import javax.swing.JFrame;
 
 public class Main  {
