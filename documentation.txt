@@ -1,0 +1,36 @@
+gp.playerWorldX -- координаты игрока относительно всего поля
+gp.playerScreenX -- координаты игрока относительно экрана
+-------------------------------------------------------------------------------
+****Bug 1****
+
+все строки, начиная с последней последовательно должны исчезнуть, когда Player будет 
+находится на расстоянии:
+	x = -gp.screenWidth / 2; 
+
+поэтому слева надо выставлять collision = true элементов: 
+	gp.worldHeight - (gp.screenWidth / 2)
+
+для того, чтобы строки не исчезали.
+
+
+
+****Problem is solved. (Almost)****
+I just have not good enougth hardware. lol.
+
+Nick
+2 месяца назад
+i have the same problem, I've been trying to fix that for months now. 
+Please @RyiSnow, any ideas on how to fix that? 
+
+I have the assumption that it's a hardware problem. I gave my code as well 
+as sprites and everything else to some friends of mine so that they could try
+to run the game, and it seems to work fine for them. I guess if the graphics
+get too heavy for your hardware the program starts having those graphic bugs. 
+
+Since that would mean that the Java 2D Graphics compontent are too heavy for
+the PC to handle I began to rewrite the game that I'm making in the LWJGL,
+which is an external library that has improved rendering options to make stuff 
+like these graphic issues non-existent. I didn't progress far enough to check if the 
+LWGJL is actually the conclusion for this problem yet tho, so I'd love an answer from 
+you Snow - You might be able to help. I really need to fix that
+-------------------------------------------------------------------------------

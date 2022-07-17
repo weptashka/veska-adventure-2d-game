@@ -27,12 +27,13 @@ public class Player extends Entity{
 		screenX = gp.screenWidth/2 - gp.tileSize/2;
 		screenY = gp.screenHeight/2 - gp.tileSize/2;
 		
+		
 		//manage collision area of player
 		solidArea = new Rectangle();
-		solidArea.x = 16;
-		solidArea.y = 16;
-		solidArea.width = 16;
-		solidArea.height = 24;
+		solidArea.x = 20;
+		solidArea.y = 20;
+		solidArea.width = 8;
+		solidArea.height = 14;
 		
 		
 		setDefaultValues();
@@ -40,8 +41,8 @@ public class Player extends Entity{
 	}
 	
 	void setDefaultValues(){
-		worldX = gp.tileSize*11; // just some coordinates
-		worldY = 0;
+		worldX = gp.tileSize * 4; // start Player point coordinates
+		worldY = gp.tileSize * 12;
 		speed = 4;
 		direction = "down";
 	}
@@ -67,9 +68,7 @@ public class Player extends Entity{
 	
 	// this method called 60 times/sec
 	public void update() {
-		
-
-		
+	
 		
 		if(keyH.upPressed == true || keyH.leftPressed == true ||
 			keyH.downPressed == true || keyH.rightPressed == true) {
@@ -104,8 +103,6 @@ public class Player extends Entity{
 				case"left":	worldX -= speed; break;
 				case"right": worldX += speed; break;
 				}
-			} else if(collisionOn == true) {
-				
 			}
 			
 			
