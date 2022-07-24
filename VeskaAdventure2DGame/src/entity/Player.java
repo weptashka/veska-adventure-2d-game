@@ -17,7 +17,9 @@ public class Player extends Entity{
 	KeyHandler keyH;
 	public final int screenX; // make player position in the center of the screen
 	public final int screenY;
-	int hasKey = 0;
+	public int hasKey = 0;
+	public int hasMayonnaise = 0;
+
 	
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
@@ -139,27 +141,43 @@ public class Player extends Entity{
 			case "Key":
 				hasKey++;
 				gp.obj[i] = null;
-				System.out.println("Key" + hasKey);
+				gp.ui.showMessage("You got a Key!");
+				gp.playSE(4);				
 				break;
 			case "Door":
 				if(hasKey > 0) {
 					hasKey--;
 					gp.obj[i] = null;
-					System.out.println("Key" + hasKey);
+					gp.ui.showMessage("You opened Door!");
+					gp.playSE(1);				
+
+				}else {
+					gp.ui.showMessage("You haven't got keys!");
 				}
 				break;
 			case "Chest":
 				if(hasKey > 0) {
 					hasKey--;
 					gp.obj[i] = null;
-					System.out.println("Key" + hasKey);
 					gp.playSE(1);
+					gp.ui.gameFinished = true;
+					gp.stopMusic();
+					gp.playSE(2);				
+				}else {
+					gp.ui.showMessage("You haven't got keys!");
 				}
 				break;
 			case "Boots":
 				speed++;
 				gp.obj[i] = null;
-				System.out.println("Now you are faster!");
+				gp.ui.showMessage("You've become faster!!");
+				gp.playSE(5);				
+				break;
+			case "Mayonnaise":
+				gp.obj[i] = null;
+				hasMayonnaise++;
+				gp.ui.showMessage("You found mayounase for Natally!");
+				gp.playSE(5);				
 				break;
 			}
 			

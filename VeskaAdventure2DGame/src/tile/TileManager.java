@@ -58,6 +58,9 @@ public class TileManager {
 			tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fire.png"));
 			tile[6].collision = true;
 			
+			tile[7] = new Tile();
+			tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/roof.png"));
+			tile[7].collision = true;
 			
 		
 		}catch(IOException e) {

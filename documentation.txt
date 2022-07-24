@@ -34,3 +34,18 @@ like these graphic issues non-existent. I didn't progress far enough to check if
 LWGJL is actually the conclusion for this problem yet tho, so I'd love an answer from 
 you Snow - You might be able to help. I really need to fix that
 -------------------------------------------------------------------------------
+Adding OBJECTS
+- make new class extending SuperObject class
+- create object in AssertSetter class
+- add in Player class how object should react when intersect with player
+- to make visible how much such objects you have - add lable in UI class
+
+-------------------------------------------------------------------------------
+MUSIC
+can be only in .wav format
+
+
+-------------------------------------------------------------------------------
+
+FONT
+g2.drawString(text, distance from left side of the sreen to text left line, distance from top to text bottom line);

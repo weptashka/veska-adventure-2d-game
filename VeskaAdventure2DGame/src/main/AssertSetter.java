@@ -4,6 +4,7 @@ import object.OBJ_Boots;
 import object.OBJ_Chest;
 import object.OBJ_Door;
 import object.OBJ_Key;
+import object.OBJ_Mayonnaise;
 
 public class AssertSetter {
 
@@ -46,9 +47,17 @@ public class AssertSetter {
 		
 		
 		
+		
 		gp.obj[6] = new OBJ_Boots();
 		gp.obj[6].worldX = gp.tileSize * 44;
 		gp.obj[6].worldY = gp.tileSize * 12;
+		
+		
+		
+		
+		gp.obj[7] = new OBJ_Mayonnaise();
+		gp.obj[7].worldX = gp.tileSize * 47;
+		gp.obj[7].worldY = gp.tileSize * 9;
 	}
 	
 }
