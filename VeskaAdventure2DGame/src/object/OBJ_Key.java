@@ -13,5 +13,12 @@ public class OBJ_Key extends SuperObject{
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-	}
+		
+		
+		solidArea.x = 5;
+		solidArea.y = 1;
+		solidArea.width = 38;
+		solidArea.height = 40;
+		
+		}
 }

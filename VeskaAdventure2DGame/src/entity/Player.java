@@ -15,9 +15,9 @@ public class Player extends Entity{
 
 	GamePanel gp;
 	KeyHandler keyH;
-	
 	public final int screenX; // make player position in the center of the screen
 	public final int screenY;
+	int hasKey = 0;
 	
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
@@ -32,6 +32,8 @@ public class Player extends Entity{
 		solidArea = new Rectangle();
 		solidArea.x = 20;
 		solidArea.y = 20;
+		solidAreaDefaultX = solidArea.x;
+		solidAreaDefaultY = solidArea.y;
 		solidArea.width = 8;
 		solidArea.height = 14;
 		
@@ -41,8 +43,8 @@ public class Player extends Entity{
 	}
 	
 	void setDefaultValues(){
-		worldX = gp.tileSize * 4; // start Player point coordinates
-		worldY = gp.tileSize * 12;
+		worldX = gp.tileSize * 28; // start Player point coordinates
+		worldY = gp.tileSize * 15;
 		speed = 4;
 		direction = "down";
 	}
@@ -95,6 +97,11 @@ public class Player extends Entity{
 			gp.cChecker.checkTile(this);
 			
 			
+			//CHECK OBJECTS COLLISION
+			int objIndex = gp.cChecker.checkObject(this, true);
+			pickUpObject(objIndex);
+			
+			
 			//IF COLLISION IS FALSE, PLAYER CAN MOVE
 			if(collisionOn == false) {
 				switch(direction) {
@@ -122,6 +129,36 @@ public class Player extends Entity{
 		}
 	}
 	
+	
+	
+	public void pickUpObject(int i) {
+		if (i != 999) {
+			String objectName = gp.obj[i].name;
+			
+			switch(objectName) {
+			case "Key":
+				hasKey++;
+				gp.obj[i] = null;
+				System.out.println("Key" + hasKey);
+				break;
+			case "Door":
+				if(hasKey > 0) {
+					hasKey--;
+					gp.obj[i] = null;
+					System.out.println("Key" + hasKey);
+				}
+				break;
+			case "Chest":
+				if(hasKey > 0) {
+					hasKey--;
+					gp.obj[i] = null;
+					System.out.println("Key" + hasKey);
+				}
+				break;
+			}
+			
+		}
+	}
 	
 	
 	// change frames op player when it's coordinates are changed

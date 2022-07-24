@@ -54,6 +54,10 @@ public class TileManager {
 			tile[5] = new Tile();
 			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/earth.png"));
 			
+			tile[6] = new Tile();
+			tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fire.png"));
+			tile[6].collision = true;
+			
 			
 		
 		}catch(IOException e) {
@@ -126,10 +130,12 @@ public class TileManager {
 			int screenY = worldY - gp.player.worldY + gp.player.screenY;
 			
 			
-			if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
-					worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-					worldY  + gp.tileSize> gp.player.worldY - gp.player.screenX &&
-					worldY - gp.tileSize< gp.player.worldX + gp.player.screenX)
+			//THAT'S SHOULDN'T BE COMMENTED, but i have some problems with map dissapearing
+			
+//			if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
+//					worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+//					worldY  + gp.tileSize> gp.player.worldY - gp.player.screenX &&
+//					worldY - gp.tileSize< gp.player.worldX + gp.player.screenX)
 			g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);	
 			worldCol ++;
 			
