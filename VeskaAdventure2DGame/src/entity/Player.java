@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import main.UtilityTool;
 
 public class Player extends Entity{
 
@@ -54,21 +55,34 @@ public class Player extends Entity{
 	
 	//method which gets out pictures from folder and put them into variables
 	public void getPlayerImage() {
+			
+			up_1 = setup("up_1");
+			up_2 = setup("up_2");
+			down_1 = setup("down_1");
+			down_2 = setup("down_2");
+			right_1 = setup("right_1");
+			right_2 = setup("right_2");
+			left_1 = setup("left_1");
+			left_2 = setup("left_2");
+
+	}
+	
+	
+	public BufferedImage setup(String imageName) {
+		UtilityTool uTool = new UtilityTool();
+		BufferedImage image = null;
+		
 		try {
-			
-			up_1 = ImageIO.read(getClass().getResourceAsStream("/player/up_1.png"));
-			up_2 = ImageIO.read(getClass().getResourceAsStream("/player/up_2.png"));
-			down_1 = ImageIO.read(getClass().getResourceAsStream("/player/down_1.png"));
-			down_2 = ImageIO.read(getClass().getResourceAsStream("/player/down_2.png"));
-			right_1 = ImageIO.read(getClass().getResourceAsStream("/player/right_1.png"));
-			right_2 = ImageIO.read(getClass().getResourceAsStream("/player/right_2.png"));
-			left_1 = ImageIO.read(getClass().getResourceAsStream("/player/left_1.png"));
-			left_2 = ImageIO.read(getClass().getResourceAsStream("/player/left_2.png"));
-			
-		}catch(IOException e) {
+			image = ImageIO.read(getClass().getResourceAsStream("/player/" + imageName + ".png"));
+			image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		return image;
 	}
+	
 	
 	// this method called 60 times/sec
 	public void update() {
@@ -225,7 +239,7 @@ public class Player extends Entity{
 			break;
 		}
 		
-		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, screenX, screenY, null);
 		
 //		g2.setColor(Color.white);
 //		g2.fillRect(x, y, gp.tileSize, gp.tileSize);

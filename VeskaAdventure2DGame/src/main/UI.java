@@ -30,9 +30,9 @@ public class UI {
 		this.font_20 = new Font("Arial", Font.PLAIN, 20);
 		this.font_40 = new Font("Arial", Font.PLAIN, 40);
 		this.font_80 = new Font("Arial", Font.BOLD, 80);
-		OBJ_Key key = new OBJ_Key();
+		OBJ_Key key = new OBJ_Key(gp);
 		keyImage = key.image;
-		OBJ_Mayonnaise mayonnaise = new OBJ_Mayonnaise();
+		OBJ_Mayonnaise mayonnaise = new OBJ_Mayonnaise(gp);
 		mayonnaiseImage = mayonnaise.image;
 
 	}
@@ -137,6 +137,7 @@ public class UI {
 			int y = gp.tileSize;
 			g2.drawString("Time:" + dFormat.format(playTime), x, y);
 			
+
 			
 		}
 		

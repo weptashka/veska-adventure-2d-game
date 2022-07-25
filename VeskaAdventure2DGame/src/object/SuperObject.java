@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import main.GamePanel;
+import main.UtilityTool;
 
 public class SuperObject {
 	
@@ -15,6 +16,7 @@ public class SuperObject {
 	public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
 	public int solidAreaDefaultX = 0;
 	public int solidAreaDefaultY = 0;
+	public UtilityTool uTool = new UtilityTool();
 
 	
 	
@@ -23,6 +25,8 @@ public class SuperObject {
 		int screenY = worldY - gp.player.worldY + gp.player.screenY;
 		
 		
+		//THAT'S SHOULDN'T BE COMMENTED, but i have some problems with map dissapearing
+//		
 //		if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
 //				worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
 //				worldY  + gp.tileSize> gp.player.worldY - gp.player.screenX &&
