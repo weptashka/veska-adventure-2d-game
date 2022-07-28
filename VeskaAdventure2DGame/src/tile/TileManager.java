@@ -23,7 +23,7 @@ public class TileManager {
 		
 		this.gp = gp;
 		
-		tile = new Tile[10];
+		tile = new Tile[60];
 		
 		getTileImage();
 		
@@ -36,14 +36,58 @@ public class TileManager {
 	public void getTileImage() {
 			
 			setup(0, "grass", false);
-			setup(1, "water", false);
+			setup(1, "water", true);
 			setup(2, "wall", true);
 			setup(3, "tree", true);
 			setup(4, "sand", false);
 			setup(5, "earth", false);
 			setup(6, "fire", true);
 			setup(7, "roof", true);
-			
+			setup(8, "roof", true);
+			setup(9, "roof", true);
+//			setup(10, "grass_00", false);
+//			setup(11, "grass_00", false);
+//			setup(12, "grass_00", false);
+//			setup(13, "grass_00", false);
+//			setup(14, "grass_00", false);
+//			setup(15, "grass_00", false);
+//			setup(16, "grass_00", false);
+//			setup(17, "grass_00", false);
+//			setup(18, "grass_00", false);
+//			setup(19, "grass_00", false);
+//			setup(20, "tree_00", false);
+//			setup(21, "tree_00", false);
+//			setup(22, "tree_00", false);
+//			setup(23, "tree_00", false);
+//			setup(24, "tree_00", false);
+//			setup(25, "tree_00", false);
+//			setup(26, "tree_00", false);
+//			setup(27, "tree_00", false);
+//			setup(28, "tree_00", false);
+//			setup(29, "tree_00", false);
+//			setup(30, "water_00", false);
+//			setup(31, "water_00", false);
+//			setup(32, "water_00", false);
+//			setup(33, "water_00", false);
+//			setup(34, "water_00", false);
+//			setup(35, "water_00", false);
+//			setup(36, "water_00", false);
+//			setup(37, "water_00", false);
+//			setup(38, "water_00", false);
+//			setup(39, "water_00", false);
+//			setup(30, "water_00", false);
+//			setup(40, "sand_00", false);
+//			setup(41, "sand_00", false);
+//			setup(42, "sand_00", false);
+//			setup(43, "sand_00", false);
+//			setup(44, "sand_00", false);
+//			setup(45, "sand_00", false);
+//			setup(46, "sand_00", false);
+//			setup(47, "sand_00", false);
+//			setup(48, "sand_00", false);
+//			setup(49, "sand_00", false);
+
+
 	}
 		
 	

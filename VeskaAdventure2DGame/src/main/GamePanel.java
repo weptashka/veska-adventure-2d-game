@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	//SCREEN SETTINGS
 	
-	final int originalTileSize = 16; // 16x16 tile
+	final int originalTileSize = 20; // 16x16 tile
 	final int scale = 3;
 	
 	public final int tileSize = originalTileSize * scale; // 48x48 tile
@@ -68,7 +68,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public void setupGame() {
 		aSetter.setObject();
 		
-		playMusic(0);
+//		playMusic(0);
 	}
 	
 	

@@ -1,6 +1,7 @@
 package entity;
 
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -20,6 +21,7 @@ public class Player extends Entity{
 	public final int screenY;
 	public int hasKey = 0;
 	public int hasMayonnaise = 0;
+	public int standCounter = 0; //count how many times player pictures of player changed  
 
 	
 	
@@ -33,22 +35,23 @@ public class Player extends Entity{
 		
 		//manage collision area of player
 		solidArea = new Rectangle();
-		solidArea.x = 20;
-		solidArea.y = 20;
+		solidArea.x = 21;
+		solidArea.y = 24;
 		solidAreaDefaultX = solidArea.x;
 		solidAreaDefaultY = solidArea.y;
-		solidArea.width = 8;
-		solidArea.height = 14;
+		solidArea.width = 9;
+		solidArea.height = 18;
 		
 		
 		setDefaultValues();
+		
 		getPlayerImage();
 	}
 	
 	void setDefaultValues(){
 		worldX = gp.tileSize * 28; // start Player point coordinates
 		worldY = gp.tileSize * 15;
-		speed = 4;
+		speed = 5;
 		direction = "down";
 	}
 	
@@ -142,6 +145,13 @@ public class Player extends Entity{
 				spriteCounter = 0;
 			}
 			
+		}else {
+			standCounter++;
+			if (standCounter == 20) {
+				spriteNum = 1;
+				standCounter = 0;
+			}
+			
 		}
 	}
 	
@@ -175,7 +185,6 @@ public class Player extends Entity{
 					gp.obj[i] = null;
 					gp.playSE(1);
 					gp.ui.gameFinished = true;
-					gp.stopMusic();
 					gp.playSE(2);				
 				}else {
 					gp.ui.showMessage("You haven't got keys!");
@@ -240,6 +249,10 @@ public class Player extends Entity{
 		}
 		
 		g2.drawImage(image, screenX, screenY, null);
+		
+		//DEBUG
+		g2.setColor(new Color(117, 13, 16));
+		g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
 		
 //		g2.setColor(Color.white);
 //		g2.fillRect(x, y, gp.tileSize, gp.tileSize);
